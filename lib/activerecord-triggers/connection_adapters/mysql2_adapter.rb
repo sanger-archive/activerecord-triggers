@@ -20,7 +20,7 @@ module ActiveRecord::Triggers
 
       # Drops the specified trigger(s)
       def drop_trigger(*names)
-        names.each { |name| execute("DROP TRIGGER #{quote_table_name(name)}") }
+        names.each { |name| execute("DROP TRIGGER IF EXISTS #{quote_table_name(name)}") }
       end
 
       # Yields each of the triggers that are defined in the current database

@@ -29,13 +29,13 @@ describe ActiveRecord::Triggers::ConnectionAdapters::Mysql2Adapter do
 
   context '#drop_trigger' do
     it "removes the trigger" do
-      subject.should_receive(:execute).with("DROP TRIGGER `trigger_name`")
+      subject.should_receive(:execute).with("DROP TRIGGER IF EXISTS `trigger_name`")
       subject.drop_trigger('trigger_name')
     end
 
     it "removes multiple triggers" do
-      subject.should_receive(:execute).with("DROP TRIGGER `trigger1`")
-      subject.should_receive(:execute).with("DROP TRIGGER `trigger2`")
+      subject.should_receive(:execute).with("DROP TRIGGER IF EXISTS `trigger1`")
+      subject.should_receive(:execute).with("DROP TRIGGER IF EXISTS `trigger2`")
       subject.drop_trigger('trigger1', 'trigger2')
     end
   end
